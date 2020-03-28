@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+icecast2:
+  lookup:
+    port: 8000
+
+  hostname: cast.example.com
+  source_password: mypassword
+  relay_password: mypassword
+  admin_user: admin
+  admin_password: mypassword

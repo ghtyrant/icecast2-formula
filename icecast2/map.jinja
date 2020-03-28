@@ -1,0 +1,9 @@
+{% set icecast2 = salt['pillar.get']('icecast2', {
+  'lookup': salt['grains.filter_by']({
+    'Debian': {
+      'server': 'icecast2',
+      'config': '/etc/icecast2/icecast.xml',
+      'port': 8000
+    }
+  })
+}, merge=True) %}
