@@ -9,6 +9,14 @@ icecast2-service-config:
     - mode: 755
 {% endif %}
 
+{% if grains['os'] == 'Debian' %}
+icecast2-init-default:
+  file.replace:
+    - name: {{ icecast2.lookup.init_default }}
+    - pattern: 'ENABLE=false'
+    - repl: 'ENABLE=true'
+{% endif %}
+
 icecast2-service:
   service.running:
     - name: icecast2
