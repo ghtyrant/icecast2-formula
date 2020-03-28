@@ -1,4 +1,5 @@
 {% set icecast2 = salt['pillar.get']('icecast2', {
+  'ssl': false,
   'lookup': salt['grains.filter_by']({
     'Debian': {
       'create_service': false,
@@ -8,7 +9,8 @@
       'user': 'icecast2',
       'group': 'icecast',
       'binary': '/usr/bin/icecast2',
-      'init_default': '/etc/default/icecast2'
+      'init_default': '/etc/default/icecast2',
+      'dist_has_ssl': false
     }
   })
 }, merge=True) %}

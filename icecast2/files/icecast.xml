@@ -82,6 +82,13 @@
     </listen-socket>
     -->
 
+    {% if icecast2.ssl %}
+    <listen-socket>
+        <port>8443</port>
+        <ssl>1</ssl>
+    </listen-socket>
+    {% endif %}
+
 
     <!-- Global header settings 
          Headers defined here will be returned for every HTTP request to Icecast.
@@ -217,6 +224,9 @@
              Both should be PEM encoded.
         <ssl-certificate>/usr/share/icecast2/icecast.pem</ssl-certificate>
         -->
+        {% if icecast2.ssl %}
+        <ssl-certificate>{{ icecast2.ssl_pem }}</ssl-certificate>
+        {% endif %}
     </paths>
 
     <logging>
