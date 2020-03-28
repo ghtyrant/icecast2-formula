@@ -1,11 +1,13 @@
 {% from 'icecast2/map.jinja' import icecast2 with context %}
 
+{% if icecast2.lookup.create_service and grains['init'] == 'systemd' %}
 icecast2-service-config:
   file.managed:
     - name: /etc/systemd/system/icecast2.service
     - source: salt://icecast2/files/icecast2.service
     - template: jinja
     - mode: 755
+{% endif %}
 
 icecast2-service:
   service.running:

@@ -3,7 +3,13 @@
 ---
 icecast2:
   lookup:
+    create_service: false
+    binary: /usr/bin/icecast2
+    server: icecast2
+    config: /etc/icecast2/icecast.xml
     port: 8000
+    user: icecast
+    group: icecast
 
   hostname: cast.example.com
   source_password: mypassword

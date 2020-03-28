@@ -1,10 +1,13 @@
+{% from "icecast2/map.jinja" import icecast2 with context %}
 [Unit]
 Description=Icecast Network Audio Streaming Server
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/icecast -c /etc/icecast.xml
+User={{ icecast2.lookup.user }}
+Group={{ icecast2.lookup.group }}
+ExecStart=/usr/bin/icecast -c {{ icecast2.lookup.config }}
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
 [Install]
